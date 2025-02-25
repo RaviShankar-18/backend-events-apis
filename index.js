@@ -33,7 +33,7 @@ app.get("/events", async (req, res) => {
     if (events) {
       res.status(200).json(events);
     } else {
-      res.status(404).jaon({ error: "Events not found" });
+      res.status(404).json({ error: "Events not found" });
     }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch events" });
@@ -58,7 +58,7 @@ app.get("/events/title/:eventTitle", async (req, res) => {
     if (event) {
       res.status(200).json(event);
     } else {
-      res.status(404).jaon({ error: "Event not found" });
+      res.status(404).json({ error: "Event not found" });
     }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch event by title" });
