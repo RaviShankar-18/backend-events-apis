@@ -1,5 +1,6 @@
 const { initializeDatabase } = require("./db/db.connect");
 const fs = require("fs");
+const path = require("path");
 const Events = require("./models/events.model");
 const express = require("express");
 const cors = require("cors");
@@ -15,7 +16,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 initializeDatabase();
 
-const jsonData = fs.readFileSync("events.json", "utf-8");
+const jsonFilePath = path.join(__dirname, "events.json");
+const jsonData = fs.readFileSync(jsonFilePath, "utf-8");
 const eventsData = JSON.parse(jsonData);
 
 async function readEvents() {
